@@ -1,0 +1,12 @@
+mat-card{
+  width: 85%;
+  height: 75%;
+  margin: 1rem auto 0 auto;
+  background-image: url("../../../../assets/img/worker.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+
