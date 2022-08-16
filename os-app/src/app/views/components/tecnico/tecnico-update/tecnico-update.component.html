@@ -1,0 +1,38 @@
+<mat-card class="mat-elevation-z8">
+
+  <mat-toolbar class="toobar mat-elevation-z8">
+    <span>Atualizando Técnico</span>
+
+
+  </mat-toolbar>
+  <mat-card-content>
+  <form class="form">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input [(ngModel)]="tecnico.nome" [formControl]="nome"
+         required maxlength="70" name="nome" matInput  >
+      <mat-error *ngIf="nome.invalid" >{{ errorValidName() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>CPF</mat-label>
+      <input [(ngModel)]="tecnico.cpf" [formControl]="cpf" name="cpf"
+         required maxlength="14" matInput placeholder="Ex. 000.000.000-00" >
+      <mat-error *ngIf="nome.invalid" >{{ errorValidCpf() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input [(ngModel)]="tecnico.telefone" name="telefone" matInput
+       placeholder="Ex. (00) 988888888 " [formControl]="telefone" required maxlength="15" >
+      <mat-error *ngIf="nome.invalid" >{{ errorValidTelefone() }}</mat-error>
+    </mat-form-field>
+
+
+  </form>
+</mat-card-content>
+  <mat-card-actions>
+    <button (click)="update()" [disabled]="errorValidName() || errorValidCpf() || errorValidTelefone()"  mat-raised-button color="primary">Editar</button>
+    <button (click)="cancel()" mat-raised-button color="warn">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

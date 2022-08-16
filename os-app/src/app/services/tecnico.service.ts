@@ -23,8 +23,16 @@ export class TecnicoService {
     return this.http.get<Tecnico[]>(this.url);
   }
 
+  findById(id: any):Observable<Tecnico>{
+    return this.http.get<Tecnico>(this.url +"/"+ id);
+  }
+
   create(tecnico: Tecnico):Observable<Tecnico>{
     return this.http.post<Tecnico>(this.url, tecnico);
+  }
+
+  update(tecnico: Tecnico):Observable<Tecnico>{
+    return this.http.put<Tecnico>(this.url +'/'+ tecnico.id , tecnico);
   }
 
   message(msg: string):void{
