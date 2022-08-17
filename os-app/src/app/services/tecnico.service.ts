@@ -35,6 +35,10 @@ export class TecnicoService {
     return this.http.put<Tecnico>(this.url +'/'+ tecnico.id , tecnico);
   }
 
+  delete(id: any){
+    return this.http.delete<void>(this.url +'/'+id);
+  }
+
   message(msg: string):void{
     this.snack.open(msg,'ok',{
       horizontalPosition: 'end',

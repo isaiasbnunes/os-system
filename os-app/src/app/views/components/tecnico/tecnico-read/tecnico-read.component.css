@@ -15,3 +15,11 @@ mat-card{
 toobar {
   flex: 1 1 auto;
 }
+
+#icon-delete{
+  color: rgb(235, 104, 104);
+}
+
+#icon-edit{
+  color: green;
+}

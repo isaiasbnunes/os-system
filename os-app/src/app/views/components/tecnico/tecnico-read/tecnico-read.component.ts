@@ -1,3 +1,5 @@
+import { DialogService } from './../../../../shared/dialog.service';
+import { DialogComponent } from './../../dialog/dialog.component';
 import { TecnicoService } from './../../../../services/tecnico.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -22,7 +24,8 @@ export class TecnicoReadComponent implements AfterViewInit {
 
   constructor(
     private service: TecnicoService,
-    private router: Router
+    private router: Router,
+    private serviceDialog: DialogService
   ){}
 
   ngAfterViewInit() {
@@ -41,4 +44,27 @@ export class TecnicoReadComponent implements AfterViewInit {
   navigateToCreate():void{
     this.router.navigate(['tecnico/create'])
   }
+
+  private onSuccessDelete():void{
+    this.findAll();
+    this.service.message('Técnico deletado com sucesso!');
+  }
+
+
+  private delete(id: any): void{
+    this.service.delete(id).subscribe(
+      r => this.onSuccessDelete()
+    );
+  }
+
+  openDialog(id: any):void{
+   this.serviceDialog.openDialog("Excluir item","Tem certeza que deseja excluir este item?")
+   .afterClosed().subscribe(r =>{
+      if(r){
+        this.delete(id);
+      }
+   });
+  }
+
+
 }

@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HearderComponent } from './views/components/template/hearder/hearder.component';
 import { FooterComponent } from './views/components/template/footer/footer.component';
 import { HomeComponent } from './views/components/home/home.component';
+import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-update/tecnico-update.component';
+
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,7 +27,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { TecnicoCreateComponent } from './views/components/tecnico/tecnico-create/tecnico-create.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-update/tecnico-update.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './views/components/dialog/dialog.component';
 
 
 @NgModule({
@@ -36,7 +39,8 @@ import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-updat
     HomeComponent,
     TecnicoReadComponent,
     TecnicoCreateComponent,
-    TecnicoUpdateComponent
+    TecnicoUpdateComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ import { TecnicoUpdateComponent } from './views/components/tecnico/tecnico-updat
     MatPaginatorModule,
     HttpClientModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
