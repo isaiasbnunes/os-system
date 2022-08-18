@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Tecnico } from '../models/tecnico';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,7 @@ export class TecnicoService {
   url: string = environment.baseUrl + "/tecnico";
 
   constructor(
-    private http : HttpClient,
-    private snack: MatSnackBar
+    private http : HttpClient
     ){
   }
 
@@ -39,11 +37,4 @@ export class TecnicoService {
     return this.http.delete<void>(this.url +'/'+id);
   }
 
-  message(msg: string):void{
-    this.snack.open(msg,'ok',{
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-      duration: 4000
-    })
-  }
 }

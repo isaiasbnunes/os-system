@@ -1,5 +1,5 @@
+import { SnackBarMessageService } from './../../../../services/snack-bar-message.service';
 import { DialogService } from './../../../../shared/dialog.service';
-import { DialogComponent } from './../../dialog/dialog.component';
 import { TecnicoService } from './../../../../services/tecnico.service';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,6 +24,7 @@ export class TecnicoReadComponent implements AfterViewInit {
 
   constructor(
     private service: TecnicoService,
+    private snackBarMessageService: SnackBarMessageService,
     private router: Router,
     private serviceDialog: DialogService
   ){}
@@ -34,11 +35,10 @@ export class TecnicoReadComponent implements AfterViewInit {
 
   findAll():void{
       this.service.findAll().subscribe((resposta) => {
-      this.tecnicos = resposta;
-      this.dataSource = new MatTableDataSource<Tecnico>(this.tecnicos);
-      this.dataSource.paginator = this.paginator;
-      console.log(this.tecnicos);
-    })
+        this.tecnicos = resposta;
+        this.dataSource = new MatTableDataSource<Tecnico>(this.tecnicos);
+        this.dataSource.paginator = this.paginator;
+      })
   }
 
   navigateToCreate():void{
@@ -47,9 +47,8 @@ export class TecnicoReadComponent implements AfterViewInit {
 
   private onSuccessDelete():void{
     this.findAll();
-    this.service.message('Técnico deletado com sucesso!');
+    this.snackBarMessageService.message('Técnico deletado com sucesso!');
   }
-
 
   private delete(id: any): void{
     this.service.delete(id).subscribe(
@@ -58,7 +57,8 @@ export class TecnicoReadComponent implements AfterViewInit {
   }
 
   openDialog(id: any):void{
-   this.serviceDialog.openDialog("Excluir item","Tem certeza que deseja excluir este item?")
+   this.serviceDialog.openDialog("Excluir técnico",
+      "Tem certeza que deseja excluir o técnico selecionado?")
    .afterClosed().subscribe(r =>{
       if(r){
         this.delete(id);

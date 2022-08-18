@@ -1,3 +1,4 @@
+import { SnackBarMessageService } from './../../../../services/snack-bar-message.service';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { TecnicoService } from './../../../../services/tecnico.service';
@@ -29,6 +30,7 @@ export class TecnicoUpdateComponent implements OnInit {
   constructor(
     private router: Router,
     private service: TecnicoService,
+    private snackBarService: SnackBarMessageService,
     private route: ActivatedRoute
   ){ }
 
@@ -40,7 +42,7 @@ export class TecnicoUpdateComponent implements OnInit {
   update():void{
     this.service.update(this.tecnico).subscribe((r) =>{
       this.router.navigate(['tecnico']);
-      this.service.message('Técnico atualizado com sucesso!');
+      this.snackBarService.message('Técnico atualizado com sucesso!');
     })
   }
 

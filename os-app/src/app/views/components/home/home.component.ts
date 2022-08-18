@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Cliente } from './../../../models/cliente';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { DialogService } from 'src/app/shared/dialog.service';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +13,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  clientes: Cliente[] = [];
+
+  displayedColumns: string[] = ['id', 'nome', 'cpf', 'telefone', 'actions'];
+  dataSource = new MatTableDataSource<Cliente>(this.clientes);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(
+    private service: ClienteService,
+    private router: Router,
+    private serviceDialog: DialogService
+  ) { }
 
   ngOnInit(): void {
   }

@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from './views/components/dialog/dialog.component';
+import { ClienteReadComponent } from './views/components/cliente/cliente-read/cliente-read.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { DialogComponent } from './views/components/dialog/dialog.component';
     TecnicoReadComponent,
     TecnicoCreateComponent,
     TecnicoUpdateComponent,
-    DialogComponent
+    DialogComponent,
+    ClienteReadComponent
   ],
   imports: [
     BrowserModule,

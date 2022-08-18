@@ -1,3 +1,4 @@
+import { SnackBarMessageService } from './../../../../services/snack-bar-message.service';
 import { Tecnico } from './../../../../models/tecnico';
 import { TecnicoService } from './../../../../services/tecnico.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +26,8 @@ export class TecnicoCreateComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: TecnicoService
+    private service: TecnicoService,
+    private snackBarService: SnackBarMessageService
   ){ }
 
   ngOnInit(): void {
@@ -34,10 +36,10 @@ export class TecnicoCreateComponent implements OnInit {
   create():void{
     this.service.create(this.tecnico).subscribe((resposta)=>{
       this.router.navigate(['tecnico']);
-      this.service.message('Tecnico criado com sucesso!');
+      this.snackBarService.message('Tecnico criado com sucesso!');
     }, err => {
       if(err.error.match('já cadastrado')){
-        this.service.message(err.error)
+        this.snackBarService.message(err.error)
       }
     })
 
