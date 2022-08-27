@@ -1,19 +1,18 @@
 import { SnackBarMessageService } from './../../../../services/snack-bar-message.service';
-import { Tecnico } from './../../../../models/tecnico';
-import { TecnicoService } from './../../../../services/tecnico.service';
-import { Component, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/services/cliente.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
-
+import { Cliente } from './../../../../models/cliente';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tecnico-create',
-  templateUrl: './tecnico-create.component.html',
-  styleUrls: ['./tecnico-create.component.css']
+  selector: 'app-cliente-create',
+  templateUrl: './cliente-create.component.html',
+  styleUrls: ['./cliente-create.component.css']
 })
-export class TecnicoCreateComponent implements OnInit {
+export class ClienteCreateComponent implements OnInit {
 
-  tecnico: Tecnico = {
+  cliente: Cliente ={
     id: '',
     nome: '',
     cpf: '',
@@ -26,17 +25,17 @@ export class TecnicoCreateComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private service: TecnicoService,
+    private service: ClienteService,
     private snackBarService: SnackBarMessageService
-  ){ }
+  ) { }
 
   ngOnInit(): void {
   }
 
   create():void{
-    this.service.create(this.tecnico).subscribe((resposta)=>{
-      this.router.navigate(['tecnico']);
-      this.snackBarService.message('Tecnico criado com sucesso!');
+    this.service.create(this.cliente).subscribe((resposta)=>{
+      this.router.navigate(['cliente']);
+      this.snackBarService.message('Cliente criado com sucesso!');
     }, err => {
       if(err.error.match('já cadastrado')){
         this.snackBarService.message(err.error)
@@ -45,7 +44,7 @@ export class TecnicoCreateComponent implements OnInit {
   }
 
   cancel():void{
-    this.router.navigate(['tecnico']);
+    this.router.navigate(['cliente']);
   }
 
   errorValidName(){

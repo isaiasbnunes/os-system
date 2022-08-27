@@ -6,10 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.bragadev.os.dtos.TecnicoDTO;
 import net.bragadev.os.exceptions.DataException;
 import net.bragadev.os.model.Cliente;
-import net.bragadev.os.model.Tecnico;
 import net.bragadev.os.repository.ClienteRepository;
 
 @Service

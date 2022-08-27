@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cliente implements Serializable{
 
@@ -21,6 +23,7 @@ public class Cliente implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<OrdemServico> list = new ArrayList<>();
 	
@@ -30,6 +33,9 @@ public class Cliente implements Serializable{
 	private String cpf;
 	private String telefone;
 	
+	
+	public Cliente() {
+	}
 	
 	public Long getId() {
 		return id;
@@ -62,7 +68,10 @@ public class Cliente implements Serializable{
 		this.telefone = telefone;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return nome;
+	}
 }
 
 

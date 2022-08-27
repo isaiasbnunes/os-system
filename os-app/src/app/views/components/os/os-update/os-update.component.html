@@ -1,0 +1,63 @@
+<mat-card class="mat-elevation-z8">
+
+  <mat-toolbar class="toobar mat-elevation-z8">
+    <span>Editar ordem de serviço</span>
+
+
+  </mat-toolbar>
+    <mat-card-content >
+
+    <form [formGroup]="osForm">
+      <div class="fields">
+      <mat-form-field appearance="fill" >
+        <mat-label>Técnico</mat-label>
+        <mat-select  formControlName="tecnico"  >
+          <mat-option   *ngFor="let t of tecnicos" [value]="t.id === selectedTecnico.id ? selectedTecnico : t">
+               {{ t.nome }}
+          </mat-option>
+
+        </mat-select>
+      </mat-form-field>
+
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione um cliente</mat-label>
+        <mat-select formControlName="cliente">
+          <mat-option *ngFor="let c of clientes" [value]="c.id === selectedCliente.id ? selectedCliente : c ">
+            {{ c.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione um status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="ABERTO">ABERTO</mat-option>
+          <mat-option value="ANDAMENTO">ANDAMENTO</mat-option>
+          <mat-option value="ENCERRADO">ENCERRADO</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selecione uma prioridade</mat-label>
+        <mat-select formControlName="prioridade">
+          <mat-option value="BAIXA">BAIXA</mat-option>
+          <mat-option value="MEDIA">MEDIA</mat-option>
+          <mat-option value="ALTA">ALTA</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <mat-form-field class="field-textarea" appearance="fill">
+      <mat-label>Textarea</mat-label>
+      <textarea formControlName="observacoes" matInput></textarea>
+    </mat-form-field>
+  </form>
+</mat-card-content>
+  <mat-card-actions>
+    <button (click)="update()"  mat-raised-button color="primary">Salvar</button>
+    <button (click)="cancel()" mat-raised-button color="warn">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

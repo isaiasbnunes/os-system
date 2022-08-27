@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import net.bragadev.os.dtos.TecnicoDTO;
 import net.bragadev.os.exceptions.DataException;
 import net.bragadev.os.model.Tecnico;
 import net.bragadev.os.repository.TecnicoRepository;
@@ -26,14 +25,14 @@ public class TecnicoService {
 		return repository.findAll();
 	}
 	
-	public Tecnico create(TecnicoDTO tDTO) {
-		if(findByCpf(tDTO) != null) {
+	public Tecnico create(Tecnico t) {
+		if(findByCpf(t) != null) {
 			throw new DataException("CPF já cadastrado!");
 		}
-		return repository.save(new Tecnico(null, tDTO.getNome(), tDTO.getCpf(), tDTO.getTelefone()));
+		return repository.save(t);
 	}
 	
-	public Tecnico findByCpf(TecnicoDTO t) {
+	public Tecnico findByCpf(Tecnico t) {
 		Tecnico obj = repository.findByCpf(t.getCpf());
 		if(obj != null) {
 			return obj;
@@ -41,7 +40,7 @@ public class TecnicoService {
 		return null;
 	}
 
-	public Tecnico update(Long id, TecnicoDTO t) {
+	public Tecnico update(Long id, Tecnico t) {
 		Tecnico tecnico = findById(id);
 			if(findByCpf(t) != null && findByCpf(t).getId() != id) {
 				throw new DataException("CPF já cadastrado!");

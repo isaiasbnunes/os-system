@@ -1,0 +1,31 @@
+.fields{
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-card-content{
+  padding-top: 20px;
+}
+
+mat-card{
+  width: 85%;
+  height: 75%;
+  margin: 1rem auto 0 auto;
+}
+
+.field-textarea{
+  width: 100%;
+}
+
+textarea{
+  min-height: 5rem;
+  max-height: 10rem;
+}
+
+mat-card-actions{
+  padding-left: 10px;
+}

@@ -28,3 +28,15 @@ toobar {
 #icon-edit{
   color: green;
 }
+
+.prioridade-baixa{
+  color: rgb(7, 121, 83);
+}
+
+.prioridade-media{
+  color: rgb(236, 234, 88);
+}
+
+.prioridade-alta{
+  color: rgb(156, 47, 4);
+}

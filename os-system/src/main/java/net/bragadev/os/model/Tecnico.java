@@ -38,14 +38,6 @@ public class Tecnico implements Serializable{
 	public Tecnico() {
 	}
 
-	public Tecnico(Long id, String nome, String cpf, String telefone) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.telefone = telefone;
-	}
-	
 	public Long getId() {
 		return id;
 	}
@@ -79,7 +71,7 @@ public class Tecnico implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Tecnico [nome=" + nome + "]";
+		return  nome;
 	}
 	
 	
